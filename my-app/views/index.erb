@@ -1,0 +1,13 @@
+<% @blogs.each do |blog| %>
+
+<div><%= blog.title %></div>
+<div><%= blog.content %></div>
+
+<% end %>
+
+
+<form action="/profile" method="post">
+	<input type="text" name="title" value="">
+	<input type="text" name="content" value="">
+	<input type="submit">
+</form>
