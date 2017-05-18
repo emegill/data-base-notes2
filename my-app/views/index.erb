@@ -1,6 +1,8 @@
 <% @blogs.each do |blog| %>
 
+<a href= '<%="/content?title=#{blog.title}"%>'>
 <div><%= blog.title %></div>
+</a>
 <div><%= blog.content %></div>
 
 <% end %>

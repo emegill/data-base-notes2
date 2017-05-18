@@ -33,3 +33,26 @@ post '/profile' do
 	Blog.create(title: title_from_params, content: content_from_params, user_id: user.id)
 	redirect '/profile'
 end
+
+post '/sign_up' do
+	@user = params[:username]
+	@password = params[:password]
+	new_user = User.create(username: @user, password: @password)
+	session[:user_id] = new_user.id
+	redirect '/profile'
+end
+
+get '/content' do
+	user = User.find(session[:user_id])
+	@blogpost = user.blogs.where(title: params[:title]).first
+	erb :content
+end
+
+# post '/comment' do
+# 	@comment = Comment.find(params[:comment_id])
+# 	# comment = Blog.find()
+# 	# Comment.create(comment: @comment)
+# 	# redirect '/content'
+# end
+
+
